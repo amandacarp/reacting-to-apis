@@ -17,6 +17,7 @@ class App extends React.Component {
     render() {
         return (
             <>
+            <h1 className="text-center">Reacting to APIs</h1>
             {this.state.films.map((film, index) => {
                 return <Cards key={index} {...film} />
             })}
