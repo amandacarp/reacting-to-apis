@@ -4,7 +4,9 @@ class People extends React.Component{
 
     render(){
         if (!this.props.id){
-            return <h1>Loading...</h1>
+            return (
+            <h1>Loading...</h1>
+            )
         } else{
         return(
             <>
@@ -17,7 +19,7 @@ class People extends React.Component{
                                 <p className="card-text">Person Age: {this.props.age}</p>
                                 <p className="card-text">Person Gender: {this.props.gender}</p>
                                 <div className="card-text">
-                                <a href= {`https://ghibliapi.herokuapp.com/people/{this.props.id}`} target="_blank" rel="noreferrer">Person Link</a>
+                                <a href= {`https://ghibliapi.herokuapp.com/people/${this.props.id}`} target="_blank" rel="noreferrer">Person Link</a>
                                 </div>
                             </div>
                         </div>

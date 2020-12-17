@@ -3,6 +3,11 @@ class Films extends React.Component{
 
 
     render(){
+        if (!this.props.id){
+            return (
+                <h1>Loading...</h1>
+            )
+        }else{
 
         return(
             <>
@@ -14,7 +19,7 @@ class Films extends React.Component{
                                 <h5 className="card-title">Film Title: {this.props.title}</h5>
                                 <p className="card-text">Film Description: {this.props.description}</p>
                                 <div className="card-text">
-                                <a href= {`https://ghibliapi.herokuapp.com/people/{this.props.id}`} target="_blank" rel="noreferrer">Link</a>
+                                <a href= {`https://ghibliapi.herokuapp.com/films/${this.props.id}`} target="_blank" rel="noreferrer">Link</a>
                                 </div>
                             </div>
                         </div>
@@ -24,7 +29,7 @@ class Films extends React.Component{
 
         </>
         )
-    }
+    }}
 }
 
 export default Films;
