@@ -5,23 +5,12 @@ import People from './People'
 class App extends React.Component {
     state = {
         films: [],
-        people: [],
         shouldShowHome: false,
         shouldShowFilms: false,
         shouldShowPeople: false,
     }
 
     componentDidMount() {
-        fetch("https://ghibliapi.herokuapp.com/films")
-            .then(res => res.json())
-            .then(obj => {
-                this.setState({ films: obj })
-            }).catch(e => console.log(e));
-        fetch("https://ghibliapi.herokuapp.com/people")
-            .then(res => res.json())
-            .then(obj => {
-                this.setState({ people: obj })
-            }).catch(e => console.log(e));
         this.setState({ shouldShowHome: true });
     }
 
@@ -63,29 +52,16 @@ class App extends React.Component {
                     </div>
                 </>
             )
-        } else if (this.state.shouldShowFilms) {
+        } else if (this.state.shouldShowFilms || this.state.shouldShowPeople) {
             return(
                 <>
                 <div className="text-center">
                 <button className="btn btn-info btn-lg m-4 shadow" onClick={this.returnClick}>RETURN HOME</button>
                 </div>
-                {this.state.films.map((film) => {
-                    return <Films key={film.id} {...film} />
-                })}
+                {this.state.shouldShowFilms ? <Films /> : <People />}
                 </>
                 )
-        } else if (this.state.shouldShowPeople) {
-            return(
-                <>
-                <div className="text-center">
-                <button className="btn btn-info btn-lg m-4 shadow" onClick={this.returnClick}>RETURN HOME</button>
-                </div>
-                {this.state.people.map((person) => {
-                    return <People key={person.id} {...person} />
-                })}
-                </>
-                )
-        } else {
+        }else {
             return (
                 <h1>Loading....</h1>
             )
