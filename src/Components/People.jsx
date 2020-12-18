@@ -16,7 +16,7 @@ class People extends React.Component {
                 {this.state.people.map(person => {
                     return (
 
-                        <div key= {`film id ${person?.id}`} className="container bg-dark">
+                        <div key= {`person id ${person?.id}`} className="container bg-dark">
                             <div className="row">
                                 <div className="col-12">
                                     <div className="card mt-4 shadow">
